@@ -1,6 +1,9 @@
+require('bootstrap');
+const createEl = require("./domMethods");
 const { createLoremIpsum, dateConverter } = require("./helpers");
 
 $(document).ready( function() {
+    if (window.location.href.indexOf("schedule") > -1) {
 
     const date = new Date();
     const d = date.getDate();
@@ -8,7 +11,6 @@ $(document).ready( function() {
     const y = date.getFullYear();
 
     function onEventClick(calEvent) {
-
     const start = dateConverter(calEvent.start);
     localStorage.setItem("currentEvent", JSON.stringify({
         title: calEvent.title,
@@ -119,3 +121,4 @@ $(document).ready( function() {
     pageEl.appendChild(containerEl2);
     pageEl.appendChild(containerEl3);
   }
+});
